@@ -1,3 +1,16 @@
 @use './partials/variables.scss' as *;
 @use './partials/mixins.scss' as *;
 
+header{
+    >*{
+        padding: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .logo_container{
+        width: 100px;
+        img{
+            width: 100%;
+        }
+    }
+}
