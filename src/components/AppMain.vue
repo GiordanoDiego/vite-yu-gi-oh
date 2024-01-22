@@ -13,7 +13,8 @@ export default {
         }
     },
     props: {
-        allCards: Array  
+        allCards: Array,
+        loaded : Boolean
     },
     components: {
        
@@ -38,7 +39,7 @@ export default {
             
             <!-- CARDS CONTAINER -->
             <div class="cards_container">
-                <div>
+                <div v-if="loaded == true">
                     <div class="found_container">
                         Found 20 cards
                     </div>
@@ -55,8 +56,13 @@ export default {
                             </div> 
                         </div>
                     </div>
-
                 </div> 
+                <div v-else class="loading">
+                    <div>
+                        Caricamento
+                    </div>
+                    <div class="spinner-border"></div>
+                </div>
             </div>
         </div>
     </main>

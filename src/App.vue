@@ -14,7 +14,7 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            baseUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0',
+            baseUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=2000&offset=0',
             store,
             cards: [],
             loaded: false
@@ -43,7 +43,9 @@ export default {
 
 <template>
     <AppHeader/>
-    <AppMain  :allCards="cards" />
+    <AppMain  
+    :allCards="cards"
+    :loaded="loaded" />
     <!-- <AppFooter/> -->
 </template>
 
