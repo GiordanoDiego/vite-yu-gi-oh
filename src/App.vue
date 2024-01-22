@@ -14,7 +14,10 @@ import axios from 'axios';
 export default {
     data(){
         return{
+            baseUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0',
             store,
+            cards: [],
+            loaded: false
         }
     },
     components: {
@@ -25,10 +28,13 @@ export default {
     methods: {
 
     }, 
-    mounted(){
-        // axios.get('https://rickandmortyapi.com/api/character?page=1').then((response) => {
-        //     console.log(response);
-        // });
+    created(){
+         axios.get(this.baseUrl).then((response) => {
+             console.log(response.data.data);
+             this.cards = response.data.data; // riempo l'array con i dati dell'api
+             console.log("CARDS",this.cards);
+             this.loaded = true; // questa diventerà tru soltanto quando avrà terminato la chiamata
+         });
     }
 }
 
@@ -37,8 +43,8 @@ export default {
 
 <template>
     <AppHeader/>
-    <AppMain/>
-    <AppFooter/>
+    <AppMain  :allCards="cards" />
+    <!-- <AppFooter/> -->
 </template>
 
 <style lang="scss"> //tolgo scoped per applicare il reset al body

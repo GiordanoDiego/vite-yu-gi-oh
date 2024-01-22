@@ -24,13 +24,16 @@ export default {
 
 <template>
      <header>
-        <div class="my_container">
+        <div>
             <div class="logo_container">
                 <img src="/img/logo.png" alt="">
             </div>
-            <h1>
-                Yu-Gi-Oh Api
-            </h1>
+            <div class="container_header">
+                <span >
+                  Yu-Gi-Oh Api
+                </span>
+            </div>
+            
         </div>
      </header>
 </template>

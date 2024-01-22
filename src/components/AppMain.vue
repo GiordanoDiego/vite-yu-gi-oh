@@ -12,13 +12,17 @@ export default {
             
         }
     },
+    props: {
+        allCards: Array  
+    },
     components: {
        
     },
    
     methods: {
 
-    }
+    },
+    
 }
 
 
@@ -27,7 +31,33 @@ export default {
 <template>
     <main>
         <div class="my_container">
-            main
+            <!-- FILTER CONTAINER -->
+            <div class="filter_container">
+                <input type="options">
+            </div>
+            
+            <!-- CARDS CONTAINER -->
+            <div class="cards_container">
+                <div>
+                    <div class="found_container">
+                        Found 20 cards
+                    </div>
+                    <div class="show_card_container">
+                        <div class="single_card" v-for="(card, i) in allCards" :key="i"> 
+                            <div class="img_container">
+                                <img :src="card.card_images[0].image_url" alt="immagine">
+                            </div>
+                            <div class="name_cards">
+                                {{card.name}}
+                            </div>
+                            <div>
+                                {{card.archetype}}
+                            </div> 
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
         </div>
     </main>
 </template>

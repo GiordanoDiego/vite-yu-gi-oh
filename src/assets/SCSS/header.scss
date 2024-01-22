@@ -3,7 +3,7 @@
 
 header{
     >*{
-        padding: 15px;
+        padding: 10px;
         display: flex;
         align-items: center;
     }
@@ -12,5 +12,10 @@ header{
         img{
             width: 100%;
         }
+    }
+
+    .container_header{
+        width: 1200px;
+        margin: 0 auto;
     }
 }
