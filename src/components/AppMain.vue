@@ -5,16 +5,14 @@
         2) Dichiarazione del componente all'interno dell'oggetto
         3) Utilizzo del componente    
 */
+import {store} from '../store.js'
+
 
 export default {
     data(){
         return{
-            
+            store,
         }
-    },
-    props: {
-        allCards: Array,
-        loaded : Boolean
     },
     components: {
        
@@ -39,12 +37,12 @@ export default {
             
             <!-- CARDS CONTAINER -->
             <div class="cards_container">
-                <div v-if="loaded == true">
+                <div v-if="store.loaded == true">
                     <div class="found_container">
-                        Found 20 cards
+                        Founded: {{store.cards.length}} cards
                     </div>
                     <div class="show_card_container">
-                        <div class="single_card" v-for="(card, i) in allCards" :key="i"> 
+                        <div class="single_card" v-for="(card, i) in store.cards" :key="i"> 
                             <div class="img_container">
                                 <img :src="card.card_images[0].image_url" alt="immagine">
                             </div>

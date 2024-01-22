@@ -14,10 +14,7 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            baseUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=2000&offset=0',
             store,
-            cards: [],
-            loaded: false
         }
     },
     components: {
@@ -29,11 +26,11 @@ export default {
 
     }, 
     created(){
-         axios.get(this.baseUrl).then((response) => {
+         axios.get(this.store.baseUrl).then((response) => {
              console.log(response.data.data);
-             this.cards = response.data.data; // riempo l'array con i dati dell'api
-             console.log("CARDS",this.cards);
-             this.loaded = true; // questa diventerà tru soltanto quando avrà terminato la chiamata
+             this.store.cards = response.data.data; // riempo l'array con i dati dell'api
+             console.log("CARDS",this.store.cards);
+             this.store.loaded = true; // questa diventerà tru soltanto quando avrà terminato la chiamata
          });
     }
 }
@@ -43,9 +40,7 @@ export default {
 
 <template>
     <AppHeader/>
-    <AppMain  
-    :allCards="cards"
-    :loaded="loaded" />
+    <AppMain/>
     <!-- <AppFooter/> -->
 </template>
 
