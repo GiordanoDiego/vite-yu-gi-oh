@@ -23,7 +23,13 @@ export default {
         AppFooter
     },
     methods: {
-
+        getAllarchetype(){
+            axios.get(this.store.urlArchetype).then((response) => {
+                console.log("Archetype:",response);
+                this.store.archetypes = response.data;
+                console.log("Archetype",this.store.archetypes);
+         });
+        }
     }, 
     created(){
          axios.get(this.store.baseUrl).then((response) => {
@@ -32,6 +38,8 @@ export default {
              console.log("CARDS",this.store.cards);
              this.store.loaded = true; // questa diventerà tru soltanto quando avrà terminato la chiamata
          });
+
+         this.getAllarchetype();
     }
 }
 

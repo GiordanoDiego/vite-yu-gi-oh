@@ -32,7 +32,14 @@ export default {
         <div class="my_container">
             <!-- FILTER CONTAINER -->
             <div class="filter_container">
-                <input type="options">
+                    <select v-model="store.selectUser" class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option v-for="(archetype, i) in store.archetypes" :value="archetype.archetype_name">{{ archetype.archetype_name }}</option>
+                    </select>
+                    
+                    <button type="submit" class="btn btn-primary ">
+                        Search
+                    </button>
             </div>
             
             <!-- CARDS CONTAINER -->

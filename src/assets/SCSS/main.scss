@@ -16,6 +16,12 @@ main{
 
 .filter_container{
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    select{
+        width: 20%;
+        margin-right: 10px;
+    }
 }
 
 .cards_container{
