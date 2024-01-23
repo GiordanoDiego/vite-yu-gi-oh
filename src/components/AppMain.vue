@@ -6,6 +6,7 @@
         3) Utilizzo del componente    
 */
 import {store} from '../store.js'
+import axios from 'axios';
 
 
 export default {
@@ -19,7 +20,37 @@ export default {
     },
    
     methods: {
+        searchArchetype(){
+            if(store.selectUser.length > 0){
+                console.log("hai cliccato");
 
+                this.store.urlSearchArchetype = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=';
+                store.urlSearchArchetype = store.urlSearchArchetype + store.selectUser
+                console.log("url", store.urlSearchArchetype);
+
+                store.baseUrl = store.urlSearchArchetype
+
+                axios.get(this.store.baseUrl).then((response) => {
+                console.log(response.data.data);
+                this.store.cards = response.data.data; 
+                console.log("CARDS",this.store.cards);
+                this.store.loaded = true; 
+         });
+            }
+        },
+
+        resetSearch(){
+                console.log("hai cliccato");
+                this.store.baseUrl = this.store.originalUrlAPI;
+                
+                axios.get(this.store.baseUrl).then((response) => {
+                console.log(response.data.data);
+                this.store.cards = response.data.data; 
+                console.log("CARDS",this.store.cards);
+                this.store.loaded = true; 
+         });
+            
+        }
     },
     
 }
@@ -33,12 +64,15 @@ export default {
             <!-- FILTER CONTAINER -->
             <div class="filter_container">
                     <select v-model="store.selectUser" class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
+                        <option selected></option>
                         <option v-for="(archetype, i) in store.archetypes" :value="archetype.archetype_name">{{ archetype.archetype_name }}</option>
                     </select>
                     
-                    <button type="submit" class="btn btn-primary ">
+                    <button @click="searchArchetype()" type="button" class="btn btn-primary ">
                         Search
+                    </button>
+                    <button @click="resetSearch()" type="button" class="btn btn-warning ">
+                        Reset
                     </button>
             </div>
             

@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         getAllarchetype(){
-            axios.get(this.store.urlArchetype).then((response) => {
+            axios.get(this.store.urlAllArchetype).then((response) => {
                 console.log("Archetype:",response);
                 this.store.archetypes = response.data;
                 console.log("Archetype",this.store.archetypes);
