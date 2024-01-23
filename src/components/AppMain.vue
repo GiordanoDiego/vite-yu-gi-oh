@@ -25,7 +25,7 @@ export default {
                 console.log("hai cliccato");
 
                 this.store.urlSearchArchetype = this.store.originalUrlArchetype;
-                store.urlSearchArchetype = store.urlSearchArchetype + store.selectUser
+                store.urlSearchArchetype = store.urlSearchArchetype + store.selectUser;
                 console.log("url", store.urlSearchArchetype);
 
                 store.baseUrl = store.urlSearchArchetype
