@@ -24,7 +24,7 @@ export default {
             if(store.selectUser.length > 0){
                 console.log("hai cliccato");
 
-                this.store.urlSearchArchetype = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=';
+                this.store.urlSearchArchetype = this.store.originalUrlArchetype;
                 store.urlSearchArchetype = store.urlSearchArchetype + store.selectUser
                 console.log("url", store.urlSearchArchetype);
 
